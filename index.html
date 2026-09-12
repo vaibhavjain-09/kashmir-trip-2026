@@ -7,111 +7,212 @@
 <meta name="description" content="A 9-night family itinerary through Srinagar, Pahalgam, Gulmarg and Sonamarg, October 10–19, 2026.">
 <style>
   :root{
-    --pine:#123b2e; --pine-2:#1d5c46; --snow:#f7f5f0; --saffron:#d97b29;
-    --ink:#1e2422; --muted:#5d6a64; --card:#ffffff; --line:#e4e0d6; --sky:#eef4f2;
+    --pine-950:#081f18; --pine-900:#0c2e23; --pine-700:#17503c; --pine-500:#2e7d5b;
+    --snow:#f6f4ee; --snow-2:#efeadf; --saffron:#d97b29; --saffron-soft:#fdf3e3;
+    --ink:#1f2521; --muted:#5d6a63; --card:#ffffff; --line:#e5e1d5;
+    --warn:#a05c12; --warn-bg:#fdf4e7; --warn-line:#f0ddbb;
+    --ok-bg:#e9f2ec; --ok-line:#cfe2d6;
+    --watch:#1f5f8b; --watch-bg:#e8f1f7; --watch-line:#c9dde9;
+    --closed:#9c3d2e; --closed-bg:#faece8; --closed-line:#eccfc7;
+    --radius:18px;
+    --shadow:0 1px 2px rgba(18,40,30,.05),0 6px 18px -8px rgba(18,40,30,.12);
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:64px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--snow);color:var(--ink);line-height:1.55}
-  .wrap{max-width:860px;margin:0 auto;padding:0 18px}
-  /* Hero */
-  header.hero{background:linear-gradient(160deg,#0d2e23 0%,#1d5c46 55%,#2f7a5c 100%);color:#fff;padding:56px 0 46px}
-  .kicker{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:#f3c98f;font-weight:700}
-  header.hero h1{font-size:clamp(2rem,6vw,3.1rem);line-height:1.08;margin:10px 0 6px;font-weight:800}
-  header.hero .dates{font-size:1.05rem;color:#d8e8e0}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;
-    padding:6px 13px;font-size:.8rem;color:#eef6f1}
-  /* Nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.92);backdrop-filter:blur(8px);
+    background:var(--snow);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+
+  /* ---------- Hero ---------- */
+  header.hero{position:relative;color:#fff;overflow:hidden;
+    background:linear-gradient(170deg,#071c15 0%,#0c2e23 45%,#1d5c46 100%)}
+  .hero-inner{position:relative;z-index:2;padding:72px 0 150px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;letter-spacing:.22em;text-transform:uppercase;
+    font-size:.7rem;font-weight:700;color:#f3c98f}
+  .kicker::before{content:"";width:26px;height:1px;background:#f3c98f;opacity:.7}
+  header.hero h1{font-size:clamp(2.5rem,7vw,4rem);line-height:1.04;margin:14px 0 12px;font-weight:600;
+    letter-spacing:-.01em}
+  header.hero .dates{font-size:clamp(1rem,2.4vw,1.15rem);color:#cfe3d8;max-width:34em}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;
+    padding:10px 16px;backdrop-filter:blur(4px)}
+  .stat b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.01em}
+  .stat span{font-size:.72rem;color:#bcd4c8;letter-spacing:.06em;text-transform:uppercase}
+  .hero-hills{position:absolute;left:0;right:0;bottom:-2px;z-index:1;display:block;width:100%;height:auto}
+
+  /* ---------- Nav ---------- */
+  nav.topnav{position:sticky;top:0;z-index:60;background:rgba(246,244,238,.9);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;-webkit-overflow-scrolling:touch}
-  nav a{white-space:nowrap;text-decoration:none;color:var(--pine);font-size:.82rem;font-weight:600;
-    padding:6px 11px;border-radius:999px}
-  nav a:hover{background:var(--sky)}
-  section{padding:40px 0 8px}
-  h2{font-size:1.45rem;color:var(--pine);margin-bottom:4px}
-  .sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
-  /* Route */
-  .route{display:flex;flex-direction:column;gap:0;margin-top:8px}
-  .leg{display:flex;gap:14px}
-  .leg .dot-col{display:flex;flex-direction:column;align-items:center;width:22px;flex:none}
-  .dot{width:13px;height:13px;border-radius:50%;background:var(--saffron);border:3px solid #fff;
-    box-shadow:0 0 0 2px var(--saffron);margin-top:5px}
-  .rail{width:2px;flex:1;background:var(--line);min-height:26px}
-  .leg:last-child .rail{display:none}
-  .leg-body{padding-bottom:22px}
-  .leg-body h3{font-size:1.02rem;color:var(--ink)}
-  .leg-body p{font-size:.86rem;color:var(--muted)}
-  /* Cards */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
-    box-shadow:0 1px 3px rgba(20,40,30,.05)}
-  .card h3{font-size:1rem;color:var(--pine);margin-bottom:2px}
-  .card .meta{font-size:.8rem;color:var(--saffron);font-weight:700;letter-spacing:.02em;margin-bottom:6px}
-  .card p{font-size:.87rem;color:var(--muted)}
-  .card.tbd{border-style:dashed;background:#fbf9f4}
-  /* Day cards */
-  .day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;
-    box-shadow:0 1px 3px rgba(20,40,30,.05)}
-  .day-head{display:flex;align-items:baseline;gap:12px;padding:14px 18px;background:var(--sky);flex-wrap:wrap}
-  .day-head .dow{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:var(--saffron);text-transform:uppercase}
-  .day-head h3{font-size:1.05rem;color:var(--pine)}
-  .day-head .tag{margin-left:auto;font-size:.72rem;color:var(--muted);font-weight:600}
-  .day ul{list-style:none;padding:12px 18px 14px}
-  .day li{display:flex;gap:12px;padding:5px 0;font-size:.9rem;border-bottom:1px dashed #f0ede4}
-  .day li:last-child{border-bottom:none}
-  .day li time{flex:none;width:86px;font-weight:700;color:var(--pine-2);font-variant-numeric:tabular-nums;font-size:.82rem;padding-top:1px}
-  .note{margin:0 18px 14px;padding:10px 14px;background:#fdf4e7;border-left:3px solid var(--saffron);
-    border-radius:0 10px 10px 0;font-size:.84rem;color:#6b4a1f}
-  /* Checklist */
-  .check{list-style:none}
-  .check li{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+  nav.topnav .wrap{display:flex;gap:2px;overflow-x:auto;padding:9px 14px;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none}
+  nav.topnav .wrap::-webkit-scrollbar{display:none}
+  nav.topnav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:600;
+    padding:7px 13px;border-radius:999px;transition:background .15s,color .15s}
+  nav.topnav a:hover{background:var(--snow-2);color:var(--pine-700)}
+  nav.topnav a.active{background:var(--pine-900);color:#fff}
+
+  section{padding:52px 0 6px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-size:.75rem;font-weight:800;letter-spacing:.16em;color:var(--saffron)}
+  h2{font-size:clamp(1.5rem,3.4vw,1.9rem);color:var(--pine-900);font-weight:600;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:.94rem;margin-bottom:22px;max-width:44em}
+
+  /* ---------- Badges ---------- */
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;padding:4px 11px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+  .badge svg{width:11px;height:11px;flex:none}
+  .b-ok{background:var(--ok-bg);border-color:var(--ok-line);color:var(--pine-700)}
+  .b-open{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn)}
+  .b-watch{background:var(--watch-bg);border-color:var(--watch-line);color:var(--watch)}
+  .b-closed{background:var(--closed-bg);border-color:var(--closed-line);color:var(--closed)}
+
+  /* ---------- Route ---------- */
+  .route-strip{display:flex;align-items:stretch;gap:0;margin:6px 0 26px;overflow-x:auto;
+    padding:6px 2px 14px;-webkit-overflow-scrolling:touch}
+  .stop{position:relative;flex:1 0 150px;text-align:center;padding:0 10px}
+  .stop .n{font-size:.68rem;font-weight:800;letter-spacing:.12em;color:var(--saffron);margin-bottom:8px}
+  .stop .pin{width:14px;height:14px;border-radius:50%;background:var(--saffron);border:3px solid #fff;
+    box-shadow:0 0 0 2px var(--saffron),0 2px 6px rgba(0,0,0,.18);margin:0 auto;position:relative;z-index:2}
+  .stop::before{content:"";position:absolute;top:calc(1.4em + 13px);left:-50%;right:50%;height:2px;
+    background:linear-gradient(90deg,var(--line),#cfc9b8);z-index:1}
+  .stop::after{content:"";position:absolute;top:calc(1.4em + 13px);left:50%;right:-50%;height:2px;
+    background:linear-gradient(90deg,#cfc9b8,var(--line));z-index:1}
+  .stop:first-child::before,.stop:last-child::after{display:none}
+  .stop h3{font-size:.98rem;color:var(--pine-900);margin-top:12px;font-weight:700}
+  .stop p{font-size:.78rem;color:var(--muted);margin-top:3px;line-height:1.45}
+
+  /* ---------- Cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;
+    box-shadow:var(--shadow);position:relative}
+  .card .meta{font-size:.7rem;color:var(--saffron);font-weight:800;letter-spacing:.1em;margin-bottom:8px;
+    display:flex;align-items:center;gap:8px}
+  .card .meta svg{width:13px;height:13px}
+  .card h3{font-size:1.06rem;color:var(--pine-900);margin-bottom:5px;font-weight:700}
+  .card p{font-size:.88rem;color:var(--muted)}
+  .card.tbd{border-style:dashed;background:#faf7f0}
+  .card .card-badge{position:absolute;top:16px;right:16px}
+
+  /* ---------- Day nav ---------- */
+  .daynav{position:sticky;top:47px;z-index:55;background:rgba(246,244,238,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);margin:0 -20px 26px;padding:10px 20px;display:flex;gap:6px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .daynav::-webkit-scrollbar{display:none}
+  .daynav a{flex:none;text-decoration:none;text-align:center;padding:6px 12px;border-radius:12px;
+    border:1px solid var(--line);background:#fff;color:var(--muted);transition:all .15s}
+  .daynav a b{display:block;font-size:.78rem;color:var(--pine-900)}
+  .daynav a span{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase}
+  .daynav a:hover{border-color:var(--saffron)}
+  .daynav a.active{background:var(--pine-900);border-color:var(--pine-900)}
+  .daynav a.active b,.daynav a.active span{color:#fff}
+
+  /* ---------- Day cards ---------- */
+  .day{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:16px;
+    overflow:hidden;box-shadow:var(--shadow)}
+  .day-head{display:flex;align-items:center;gap:14px;padding:16px 22px;flex-wrap:wrap;
+    background:linear-gradient(180deg,#f3efe5, #f6f2e9)}
+  .day-date{flex:none;text-align:center;background:var(--pine-900);color:#fff;border-radius:12px;
+    padding:7px 12px;line-height:1.15;min-width:58px}
+  .day-date b{display:block;font-size:1.15rem;font-weight:700}
+  .day-date span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#cfe3d8}
+  .day-head h3{font-size:1.12rem;color:var(--pine-900);font-weight:700}
+  .day-head .dow{display:block;font-size:.68rem;font-weight:800;letter-spacing:.14em;color:var(--saffron);
+    text-transform:uppercase;margin-bottom:2px}
+  .day-head .tag{margin-left:auto}
+  .timeline{list-style:none;padding:16px 22px 10px}
+  .timeline li{display:flex;gap:16px;position:relative;padding:7px 0 7px 2px}
+  .timeline li::before{content:"";position:absolute;left:96px;top:0;bottom:0;width:2px;background:var(--snow-2)}
+  .timeline li:first-child::before{top:16px}
+  .timeline li:last-child::before{bottom:calc(100% - 16px)}
+  .timeline time{flex:none;width:78px;text-align:right;font-weight:700;color:var(--pine-700);
+    font-variant-numeric:tabular-nums;font-size:.8rem;padding-top:2px}
+  .timeline .tdot{flex:none;width:12px;height:12px;border-radius:50%;background:#fff;
+    border:3px solid var(--pine-500);margin:4px 0 0 -1px;position:relative;z-index:1}
+  .timeline .tcell{flex:none;width:14px}
+  .timeline .txt{font-size:.9rem;color:var(--ink);padding-top:1px}
+  .note{margin:6px 22px 18px;padding:12px 16px;background:var(--warn-bg);border:1px solid var(--warn-line);
+    border-left:3px solid var(--saffron);border-radius:0 12px 12px 0;font-size:.85rem;color:#6b4a1f}
+  .note.info{background:var(--watch-bg);border-color:var(--watch-line);border-left-color:var(--watch);color:#274b63}
+
+  /* ---------- Checklist ---------- */
+  .check{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:6px 22px}
+  .check li{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line);
+    font-size:.93rem}
   .check li:last-child{border-bottom:none}
-  .box{flex:none;width:19px;height:19px;border:2px solid var(--pine-2);border-radius:6px;margin-top:2px}
-  .box.done{background:var(--pine-2);position:relative}
-  .box.done::after{content:"✓";color:#fff;font-size:.75rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-  .check .c-sub{display:block;font-size:.8rem;color:var(--muted);margin-top:2px}
-  /* Caveats */
-  .warn{background:#fdf4e7;border:1px solid #f0ddbb;border-radius:14px;padding:14px 18px;margin-bottom:12px}
-  .warn h3{font-size:.95rem;color:#7a5416;margin-bottom:4px}
-  .warn p{font-size:.87rem;color:#6b4a1f}
-  .ok{background:var(--sky);border:1px solid #d4e4dc;border-radius:14px;padding:14px 18px;margin-bottom:12px}
-  .ok h3{font-size:.95rem;color:var(--pine);margin-bottom:4px}
-  .ok p{font-size:.87rem;color:var(--muted)}
-  /* Sources */
-  .src{list-style:none}
-  .src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+  .box{flex:none;width:20px;height:20px;border:2px solid var(--pine-500);border-radius:7px;margin-top:2px;
+    position:relative}
+  .box.done{background:var(--pine-700);border-color:var(--pine-700)}
+  .box.done::after{content:"✓";color:#fff;font-size:.75rem;position:absolute;inset:0;display:flex;
+    align-items:center;justify-content:center}
+  .check .c-body{flex:1}
+  .check .c-sub{display:block;font-size:.81rem;color:var(--muted);margin-top:3px}
+  .check .c-badge{flex:none;margin-top:2px}
+
+  /* ---------- Callouts ---------- */
+  .callout{border-radius:var(--radius);padding:18px 22px;margin-bottom:14px;border:1px solid;
+    display:flex;gap:16px}
+  .callout .ic{flex:none;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;
+    justify-content:center}
+  .callout .ic svg{width:17px;height:17px}
+  .callout h3{font-size:.98rem;margin-bottom:4px}
+  .callout p{font-size:.88rem}
+  .c-warn{background:var(--warn-bg);border-color:var(--warn-line)}
+  .c-warn .ic{background:#f3dfc0;color:var(--warn)}
+  .c-warn h3{color:#7a5416}.c-warn p{color:#6b4a1f}
+  .c-closed{background:var(--closed-bg);border-color:var(--closed-line)}
+  .c-closed .ic{background:#f2d2c9;color:var(--closed)}
+  .c-closed h3{color:#7d2f22}.c-closed p{color:#6f4136}
+  .c-ok{background:var(--ok-bg);border-color:var(--ok-line)}
+  .c-ok .ic{background:#cfe4d5;color:var(--pine-700)}
+  .c-ok h3{color:var(--pine-900)}.c-ok p{color:var(--muted)}
+
+  /* ---------- Sources ---------- */
+  .src{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:4px 22px}
+  .src li{padding:13px 0;border-bottom:1px solid var(--line);font-size:.9rem}
   .src li:last-child{border-bottom:none}
-  .src a{color:var(--pine-2);text-decoration:none;font-weight:600;word-break:break-all}
+  .src a{color:var(--pine-700);text-decoration:none;font-weight:700;word-break:break-word}
   .src a:hover{text-decoration:underline}
-  .src span{color:var(--muted);font-size:.8rem;display:block}
-  footer{margin-top:46px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
-  @media (max-width:520px){
-    .day li time{width:74px}
-    .day-head .tag{width:100%;margin-left:0}
+  .src span{color:var(--muted);font-size:.79rem;display:block;margin-top:2px}
+
+  footer{margin-top:56px;padding:30px 0 44px;border-top:1px solid var(--line);color:var(--muted);
+    font-size:.8rem;text-align:center}
+
+  @media (max-width:560px){
+    .hero-inner{padding:56px 0 120px}
+    section{padding:40px 0 4px}
+    .day-head .tag{margin-left:0;width:100%}
+    .timeline li::before{left:90px}
+    .timeline time{width:66px;font-size:.74rem}
+    .daynav{top:44px}
   }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="wrap">
+  <div class="wrap hero-inner">
     <div class="kicker">Family Adventure · 9 Nights</div>
-    <h1>Kashmir in Autumn</h1>
+    <h1 class="serif">Kashmir in Autumn</h1>
     <div class="dates">October 10–19, 2026 · Srinagar → Pahalgam → Gulmarg → Sonamarg → Srinagar</div>
-    <div class="chips">
-      <span class="chip">2 adults + 1 child (paced for a 4-year-old)</span>
-      <span class="chip">Leave ~8:00 AM</span>
-      <span class="chip">Back before dark</span>
-      <span class="chip">Dinner ~7:30 PM</span>
-      <span class="chip">Sleep by 10 PM</span>
+    <div class="hero-stats">
+      <div class="stat"><b>9 nights</b><span>Oct 10–19</span></div>
+      <div class="stat"><b>4 stops</b><span>one clean loop</span></div>
+      <div class="stat"><b>2 + 1</b><span>adults + child, 4</span></div>
+      <div class="stat"><b>~8 AM</b><span>daily start</span></div>
+      <div class="stat"><b>10 PM</b><span>lights out</span></div>
     </div>
   </div>
+  <svg class="hero-hills" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,150 L180,70 L320,130 L470,40 L640,120 L820,55 L1010,125 L1180,60 L1330,115 L1440,75 L1440,190 L0,190 Z" fill="rgba(255,255,255,.07)"/>
+    <path d="M0,175 L220,105 L400,160 L600,90 L790,150 L980,100 L1200,160 L1440,110 L1440,190 L0,190 Z" fill="#f6f4ee"/>
+  </svg>
 </header>
 
-<nav>
+<nav class="topnav" id="topnav">
   <div class="wrap">
     <a href="#route">Route</a>
     <a href="#stays">Stays</a>
@@ -126,195 +227,270 @@
 <main class="wrap">
 
 <section id="route">
-  <h2>Route overview</h2>
-  <p class="sub">One clean loop with no repeated legs. Every transfer doubles as a sightseeing day.</p>
-  <div class="route">
-    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
-      <div class="leg-body"><h3>Srinagar · 2 nights</h3><p>Land 12:35 PM on Oct 10 · Dal Lake, Mughal gardens, Doodhpathri day trip</p></div></div>
-    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
-      <div class="leg-body"><h3>Pahalgam · 2 nights</h3><p>Oct 12–14 · Lidder valley, Aru, Betaab, Chandanwari, Baisaran</p></div></div>
-    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
-      <div class="leg-body"><h3>Gulmarg · 2 nights</h3><p>Oct 14–16 · Gondola Phase 1 + 2, meadows, Drung Waterfall en route</p></div></div>
-    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
-      <div class="leg-body"><h3>Sonamarg · 2 nights</h3><p>Oct 16–18 · Thajiwas, Sindh river, optional Zero Point</p></div></div>
-    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
-      <div class="leg-body"><h3>Srinagar · 1 night (final)</h3><p>Oct 18–19 · Naranag temple option, Dal Lake sunset</p></div></div>
-    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
-      <div class="leg-body"><h3>Fly out Oct 19 · 3:50 PM</h3><p>Leave for the airport with a 2.5-hour buffer</p></div></div>
+  <div class="sec-head"><span class="sec-num">01</span><h2 class="serif">Route overview</h2></div>
+  <p class="sub">One clean loop with no repeated legs. Every transfer doubles as a sightseeing day. Outdoor time wraps by ~5:15 PM, dinner ~7:30 PM, sleep by 10 PM — paced for a 4-year-old.</p>
+  <div class="route-strip">
+    <div class="stop"><div class="n">2 NIGHTS</div><div class="pin"></div><h3>Srinagar</h3><p>Land 12:35 PM Oct 10 · Dal Lake, Mughal gardens, Doodhpathri day trip</p></div>
+    <div class="stop"><div class="n">2 NIGHTS</div><div class="pin"></div><h3>Pahalgam</h3><p>Oct 12–14 · Lidder valley, Aru, Betaab, Chandanwari, Baisaran</p></div>
+    <div class="stop"><div class="n">2 NIGHTS</div><div class="pin"></div><h3>Gulmarg</h3><p>Oct 14–16 · Gondola Phase 1 + 2, meadows, Drung Waterfall en route</p></div>
+    <div class="stop"><div class="n">2 NIGHTS</div><div class="pin"></div><h3>Sonamarg</h3><p>Oct 16–18 · Thajiwas, Sindh river, optional Zero Point</p></div>
+    <div class="stop"><div class="n">1 NIGHT</div><div class="pin"></div><h3>Srinagar</h3><p>Oct 18–19 · Naranag temple option, Dal Lake sunset</p></div>
+    <div class="stop"><div class="n">DEPART</div><div class="pin"></div><h3>Fly out</h3><p>Oct 19 · 3:50 PM, 2.5-hour airport buffer</p></div>
   </div>
 </section>
 
 <section id="stays">
-  <h2>Stays</h2>
+  <div class="sec-head"><span class="sec-num">02</span><h2 class="serif">Stays</h2></div>
   <p class="sub">All fixed bookings. Two nights per stop, so no one-night packing churn.</p>
   <div class="grid">
     <div class="card"><div class="meta">OCT 10–12 · 2 NIGHTS</div><h3>The Vintage, Srinagar</h3><p>On Dal Lake. Shikara ghat and Mughal gardens close by.</p></div>
     <div class="card"><div class="meta">OCT 12–14 · 2 NIGHTS</div><h3>Radisson Golf Resort, Pahalgam</h3><p>Lidder valley base for Aru, Betaab and Chandanwari.</p></div>
     <div class="card"><div class="meta">OCT 14–16 · 2 NIGHTS</div><h3>The Vintage, Gulmarg</h3><p>Near the Gondola base — easy 8 AM start on cable-car day.</p></div>
     <div class="card"><div class="meta">OCT 16–18 · 2 NIGHTS</div><h3>Four Points by Sheraton, Sonamarg</h3><p>Mid-October is tail season here — reconfirm directly before travel.</p></div>
-    <div class="card tbd"><div class="meta">OCT 18–19 · 1 NIGHT</div><h3>Final night — to be confirmed</h3><p>Planned in Srinagar near Dal Lake. Booking still open.</p></div>
+    <div class="card tbd"><span class="card-badge badge b-open">Open</span><div class="meta">OCT 18–19 · 1 NIGHT</div><h3>Final night — to be confirmed</h3><p>Planned in Srinagar near Dal Lake. Booking still open.</p></div>
   </div>
 </section>
 
 <section id="days">
-  <h2>Day by day</h2>
+  <div class="sec-head"><span class="sec-num">03</span><h2 class="serif">Day by day</h2></div>
   <p class="sub">Tentative timings, grouped so each day flows in one direction. Outdoor time wraps by ~5:15 PM — mid-October gets dark and cold quickly.</p>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Sat · Oct 10</span><h3>Arrive in Srinagar</h3><span class="tag">One Dal Lake cluster</span></div>
-    <ul>
-      <li><time>12:35 PM</time><span>Land in Srinagar (flew from Bengaluru via Delhi)</span></li>
-      <li><time>2:00 PM</time><span>Check in, lunch and rest</span></li>
-      <li><time>3:30 PM</time><span>Nishat or Shalimar Garden</span></li>
-      <li><time>5:00 PM</time><span>Private shikara ride on Dal Lake (child life jacket)</span></li>
-      <li><time>7:30 PM</time><span>Dinner</span></li>
+  <div class="daynav" id="daynav">
+    <a href="#day-10"><b>10</b><span>Sat</span></a>
+    <a href="#day-11"><b>11</b><span>Sun</span></a>
+    <a href="#day-12"><b>12</b><span>Mon</span></a>
+    <a href="#day-13"><b>13</b><span>Tue</span></a>
+    <a href="#day-14"><b>14</b><span>Wed</span></a>
+    <a href="#day-15"><b>15</b><span>Thu</span></a>
+    <a href="#day-16"><b>16</b><span>Fri</span></a>
+    <a href="#day-17"><b>17</b><span>Sat</span></a>
+    <a href="#day-18"><b>18</b><span>Sun</span></a>
+    <a href="#day-19"><b>19</b><span>Mon</span></a>
+  </div>
+
+  <div class="day" id="day-10">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>10</b></div>
+      <div><span class="dow">Saturday · Arrival</span><h3>Arrive in Srinagar</h3></div>
+      <span class="tag badge b-ok">One Dal Lake cluster</span>
+    </div>
+    <ul class="timeline">
+      <li><time>12:35 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Land in Srinagar (flew from Bengaluru via Delhi)</span></li>
+      <li><time>2:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Check in, lunch and rest</span></li>
+      <li><time>3:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Nishat or Shalimar Garden</span></li>
+      <li><time>5:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Private shikara ride on Dal Lake (child life jacket)</span></li>
+      <li><time>7:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Dinner</span></li>
     </ul>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Sun · Oct 11</span><h3>Doodhpathri day trip</h3><span class="tag">Out-and-back from Srinagar</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Leave Srinagar (~1.5–2 hr drive)</span></li>
-      <li><time>10:00 AM</time><span>Meadow and pine-forest walk</span></li>
-      <li><time>12:30 PM</time><span>Picnic lunch by the river</span></li>
-      <li><time>1:30 PM</time><span>Optional short led pony ride</span></li>
-      <li><time>2:30 PM</time><span>Palmaidan viewpoint nearby</span></li>
-      <li><time>3:45 PM</time><span>Head back</span></li>
-      <li><time>5:45 PM</time><span>Hotel</span></li>
+  <div class="day" id="day-11">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>11</b></div>
+      <div><span class="dow">Sunday · Out-and-back from Srinagar</span><h3>Doodhpathri day trip</h3></div>
+      <span class="tag badge b-closed">Closed now</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Leave Srinagar (~1.5–2 hr drive)</span></li>
+      <li><time>10:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Meadow and pine-forest walk</span></li>
+      <li><time>12:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Picnic lunch by the river</span></li>
+      <li><time>1:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Optional short led pony ride</span></li>
+      <li><time>2:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Palmaidan viewpoint nearby</span></li>
+      <li><time>3:45 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Head back</span></li>
+      <li><time>5:45 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Hotel</span></li>
     </ul>
     <p class="note"><strong>Currently closed.</strong> Doodhpathri is temporarily shut to tourists (security operation in the Budgam forest area). Oct 11 is booked as a Srinagar sightseeing day — Mughal gardens, Pari Mahal, old city — with a free swap to Doodhpathri if it reopens, and Yusmarg as the alternative. Recheck 1–2 days before.</p>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Mon · Oct 12</span><h3>Srinagar → Pahalgam</h3><span class="tag">Every stop on the highway</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Leave hotel</span></li>
-      <li><time>8:45 AM</time><span>Pampore saffron fields stop</span></li>
-      <li><time>9:45 AM</time><span>Awantipora ruins</span></li>
-      <li><time>10:45 AM</time><span>Cricket-bat workshop at Sangam</span></li>
-      <li><time>12:30 PM</time><span>Pahalgam check-in and lunch</span></li>
-      <li><time>3:30 PM</time><span>Lidder riverside walk in town</span></li>
-      <li><time>5:15 PM</time><span>Hotel</span></li>
+  <div class="day" id="day-12">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>12</b></div>
+      <div><span class="dow">Monday · Every stop on the highway</span><h3>Srinagar → Pahalgam</h3></div>
+      <span class="tag badge b-ok">Transfer day</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Leave hotel</span></li>
+      <li><time>8:45 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Pampore saffron fields stop</span></li>
+      <li><time>9:45 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Awantipora ruins</span></li>
+      <li><time>10:45 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Cricket-bat workshop at Sangam</span></li>
+      <li><time>12:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Pahalgam check-in and lunch</span></li>
+      <li><time>3:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Lidder riverside walk in town</span></li>
+      <li><time>5:15 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Hotel</span></li>
     </ul>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Tue · Oct 13</span><h3>Pahalgam valleys</h3><span class="tag">Each road fork once</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Aru Valley + short led pony ride (local union taxi)</span></li>
-      <li><time>12:00 PM</time><span>Back to Pahalgam for lunch</span></li>
-      <li><time>1:30 PM</time><span>Betaab Valley + Chandanwari, same road</span></li>
-      <li><time>4:00 PM</time><span>Hotel and rest</span></li>
+  <div class="day" id="day-13">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>13</b></div>
+      <div><span class="dow">Tuesday · Each road fork once</span><h3>Pahalgam valleys</h3></div>
+      <span class="tag badge b-ok">Valley day</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Aru Valley + short led pony ride (local union taxi)</span></li>
+      <li><time>12:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Back to Pahalgam for lunch</span></li>
+      <li><time>1:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Betaab Valley + Chandanwari, same road</span></li>
+      <li><time>4:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Hotel and rest</span></li>
     </ul>
-    <p class="note">If energy runs low, drop Chandanwari rather than criss-crossing the valley.</p>
+    <p class="note info">If energy runs low, drop Chandanwari rather than criss-crossing the valley.</p>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Wed · Oct 14</span><h3>Pahalgam → Gulmarg</h3><span class="tag">One useful stop en route</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Baisaran meadow above Pahalgam (pony or child-paced walk)</span></li>
-      <li><time>11:00 AM</time><span>Leave Pahalgam</span></li>
-      <li><time>2:30 PM</time><span>Drung Waterfall near Tangmarg, directly on the route</span></li>
-      <li><time>3:45 PM</time><span>Continue to Gulmarg</span></li>
-      <li><time>4:30 PM</time><span>Check in</span></li>
+  <div class="day" id="day-14">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>14</b></div>
+      <div><span class="dow">Wednesday · One useful stop en route</span><h3>Pahalgam → Gulmarg</h3></div>
+      <span class="tag badge b-ok">Transfer day</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Baisaran meadow above Pahalgam (pony or child-paced walk)</span></li>
+      <li><time>11:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Leave Pahalgam</span></li>
+      <li><time>2:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Drung Waterfall near Tangmarg, directly on the route</span></li>
+      <li><time>3:45 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Continue to Gulmarg</span></li>
+      <li><time>4:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Check in</span></li>
     </ul>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Thu · Oct 15</span><h3>Gulmarg Gondola day</h3><span class="tag">Everything within Gulmarg</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Gondola base — first slot</span></li>
-      <li><time>8:30 AM</time><span>Phase 1 to Kongdori, then Phase 2 toward Apharwat (~3,980 m)</span></li>
-      <li><time>11:30 AM</time><span>Snow / meadow play + sledging</span></li>
-      <li><time>12:00 PM</time><span>Lunch</span></li>
-      <li><time>1:30 PM</time><span>St Mary's Church + Children's Park</span></li>
-      <li><time>3:00 PM</time><span>Strawberry Valley</span></li>
-      <li><time>5:00 PM</time><span>Hotel</span></li>
+  <div class="day" id="day-15">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>15</b></div>
+      <div><span class="dow">Thursday · Everything within Gulmarg</span><h3>Gulmarg Gondola day</h3></div>
+      <span class="tag badge b-watch">Book ahead</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Gondola base — first slot</span></li>
+      <li><time>8:30 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Phase 1 to Kongdori, then Phase 2 toward Apharwat (~3,980 m)</span></li>
+      <li><time>11:30 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Snow / meadow play + sledging</span></li>
+      <li><time>12:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Lunch</span></li>
+      <li><time>1:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">St Mary's Church + Children's Park</span></li>
+      <li><time>3:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Strawberry Valley</span></li>
+      <li><time>5:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Hotel</span></li>
     </ul>
     <p class="note"><strong>Tickets:</strong> official portal only, for Phase 1 + Phase 2 on Oct 15. Booking is being monitored and a reminder is set. Verify child eligibility for Phase 2 before buying — altitude gain is rapid, and entry rules can block it even if he's fine with heights.</p>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Fri · Oct 16</span><h3>Gulmarg → Sonamarg</h3><span class="tag">Clean transfer day</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Leave Gulmarg</span></li>
-      <li><time>8:30 AM</time><span>Tangmarg viewpoint on the descent</span></li>
-      <li><time>12:30 PM</time><span>Sonamarg check-in and lunch</span></li>
-      <li><time>3:30 PM</time><span>Sindh river walk in town</span></li>
-      <li><time>5:00 PM</time><span>Hotel</span></li>
+  <div class="day" id="day-16">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>16</b></div>
+      <div><span class="dow">Friday · Clean transfer day</span><h3>Gulmarg → Sonamarg</h3></div>
+      <span class="tag badge b-ok">Transfer day</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Leave Gulmarg</span></li>
+      <li><time>8:30 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Tangmarg viewpoint on the descent</span></li>
+      <li><time>12:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Sonamarg check-in and lunch</span></li>
+      <li><time>3:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Sindh river walk in town</span></li>
+      <li><time>5:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Hotel</span></li>
     </ul>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Sat · Oct 17</span><h3>Sonamarg valley day</h3><span class="tag">One compact valley</span></div>
-    <ul>
-      <li><time>8:00 AM</time><span>Thajiwas-side pony ride or short glacier-view walk</span></li>
-      <li><time>12:00 PM</time><span>Picnic lunch</span></li>
-      <li><time>1:30 PM</time><span>Lower valley + riverbank play</span></li>
-      <li><time>4:30 PM</time><span>Hotel</span></li>
+  <div class="day" id="day-17">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>17</b></div>
+      <div><span class="dow">Saturday · One compact valley</span><h3>Sonamarg valley day</h3></div>
+      <span class="tag badge b-open">Same-day decision</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Thajiwas-side pony ride or short glacier-view walk</span></li>
+      <li><time>12:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Picnic lunch</span></li>
+      <li><time>1:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Lower valley + riverbank play</span></li>
+      <li><time>4:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Hotel</span></li>
     </ul>
-    <p class="note">Zero Point / Zojila only if the road and weather are clearly good that morning — decide on the day, not in advance.</p>
+    <p class="note info">Zero Point / Zojila only if the road and weather are clearly good that morning — decide on the day, not in advance.</p>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Sun · Oct 18</span><h3>Sonamarg → Srinagar</h3><span class="tag">Return axis</span></div>
-    <ul>
-      <li><time>8:30 AM</time><span>Short river walk</span></li>
-      <li><time>10:00 AM</time><span>Leave toward Srinagar</span></li>
-      <li><time>11:00 AM</time><span>Optional Naranag temple near Kangan, on the way</span></li>
-      <li><time>1:30 PM</time><span>Lunch and check-in</span></li>
-      <li><time>4:30 PM</time><span>Dal Lake sunset or gentle old-city walk</span></li>
-      <li><time>7:30 PM</time><span>Dinner</span></li>
+  <div class="day" id="day-18">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>18</b></div>
+      <div><span class="dow">Sunday · Return axis</span><h3>Sonamarg → Srinagar</h3></div>
+      <span class="tag badge b-ok">Transfer day</span>
+    </div>
+    <ul class="timeline">
+      <li><time>8:30 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Short river walk</span></li>
+      <li><time>10:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Leave toward Srinagar</span></li>
+      <li><time>11:00 AM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Optional Naranag temple near Kangan, on the way</span></li>
+      <li><time>1:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Lunch and check-in</span></li>
+      <li><time>4:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Dal Lake sunset or gentle old-city walk</span></li>
+      <li><time>7:30 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Dinner</span></li>
     </ul>
   </div>
 
-  <div class="day">
-    <div class="day-head"><span class="dow">Mon · Oct 19</span><h3>Fly home</h3><span class="tag">Buffer built in</span></div>
-    <ul>
-      <li><time>Morning</time><span>Easy breakfast and packing</span></li>
-      <li><time>~1:00 PM</time><span>Leave for the airport (2.5-hour buffer)</span></li>
-      <li><time>3:50 PM</time><span>Flight from Srinagar (to Bengaluru via Delhi)</span></li>
+  <div class="day" id="day-19">
+    <div class="day-head">
+      <div class="day-date"><span>OCT</span><b>19</b></div>
+      <div><span class="dow">Monday · Buffer built in</span><h3>Fly home</h3></div>
+      <span class="tag badge b-ok">Departure</span>
+    </div>
+    <ul class="timeline">
+      <li><time>Morning</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Easy breakfast and packing</span></li>
+      <li><time>~1:00 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Leave for the airport (2.5-hour buffer)</span></li>
+      <li><time>3:50 PM</time><span class="tcell"><span class="tdot"></span></span><span class="txt">Flight from Srinagar (to Bengaluru via Delhi)</span></li>
     </ul>
   </div>
 </section>
 
 <section id="transport">
-  <h2>Transport</h2>
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="serif">Transport</h2></div>
   <p class="sub">One chauffeur-driven car for the whole loop; local union taxis for in-resort sightseeing.</p>
   <div class="grid">
-    <div class="card"><div class="meta">FLIGHTS</div><h3>Bengaluru ⇄ Srinagar via Delhi</h3><p>Land Sat Oct 10 at 12:35 PM · Fly out Mon Oct 19 at 3:50 PM. Airport pickup and drop are part of the car plan.</p></div>
-    <div class="card"><div class="meta">FULL-TRIP CAR</div><h3>Chauffeur-driven SUV</h3><p>All-inclusive quote received from the lead operator (Innova/Ertiga class, same driver requested, Doodhpathri swap included). Two backup quotes are being compared before anything is booked — no commitment yet.</p></div>
-    <div class="card"><div class="meta">LOCAL UNION TAXIS</div><h3>Gulmarg · Pahalgam · Sonamarg</h3><p>In-resort sightseeing runs on local union cabs, paid directly on the ground. Vendor-quoted estimates: Gulmarg ₹3–4k, Pahalgam Aru/Betaab/Chandanwari ₹2–3k, Sonamarg Zero Point ₹5–6k.</p></div>
+    <div class="card">
+      <div class="meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>FLIGHTS</div>
+      <h3>Bengaluru ⇄ Srinagar via Delhi</h3>
+      <p>Land Sat Oct 10 at 12:35 PM · Fly out Mon Oct 19 at 3:50 PM. Airport pickup and drop are part of the car plan.</p>
+    </div>
+    <div class="card">
+      <span class="card-badge badge b-watch">Comparing quotes</span>
+      <div class="meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11m-14 0h14a2 2 0 0 1 2 2v4h-2m-14 0H3v-4a2 2 0 0 1 2-2zm2 6a1.5 1.5 0 1 0 0-.01M17 17a1.5 1.5 0 1 0 0-.01"/></svg>FULL-TRIP CAR</div>
+      <h3>Chauffeur-driven SUV</h3>
+      <p>All-inclusive quote received from the lead operator (Innova/Ertiga class, same driver requested, Doodhpathri swap included). Two backup quotes are being compared before anything is booked — no commitment yet.</p>
+    </div>
+    <div class="card">
+      <div class="meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>LOCAL UNION TAXIS</div>
+      <h3>Gulmarg · Pahalgam · Sonamarg</h3>
+      <p>In-resort sightseeing runs on local union cabs, paid directly on the ground. Vendor-quoted estimates: Gulmarg ₹3–4k, Pahalgam Aru/Betaab/Chandanwari ₹2–3k, Sonamarg Zero Point ₹5–6k.</p>
+    </div>
   </div>
 </section>
 
 <section id="checklist">
-  <h2>Booking checklist</h2>
+  <div class="sec-head"><span class="sec-num">05</span><h2 class="serif">Booking checklist</h2></div>
   <p class="sub">What's locked and what's still open, three weeks out.</p>
   <ul class="check">
-    <li><span class="box done"></span><span>Flights booked — out Oct 10, back Oct 19</span></li>
-    <li><span class="box done"></span><span>Hotels booked — Srinagar, Pahalgam, Gulmarg, Sonamarg (2 nights each)</span></li>
-    <li><span class="box"></span><span>Gulmarg Gondola, Oct 15, Phase 1 + Phase 2<span class="c-sub">Official portal only. Not open for Oct 15 yet — reminder set for Sep 15, 9:00 AM, site being monitored. Portal blocks automated access, so booking may need to happen from a phone in India.</span></span></li>
-    <li><span class="box"></span><span>Final night (Oct 18) stay — Srinagar preferred<span class="c-sub">Not yet booked anywhere.</span></span></li>
-    <li><span class="box"></span><span>Approve final chauffeur quote<span class="c-sub">Lead quote in hand, backups being compared; confirm the all-in figure before committing.</span></span></li>
-    <li><span class="box"></span><span>Reconfirm Sonamarg hotel and road status before travel<span class="c-sub">Mid-October is tail season; closures and early snow are possible.</span></span></li>
-    <li><span class="box"></span><span>Recheck Doodhpathri access 1–2 days before Oct 11<span class="c-sub">Free swap agreed with the operator if it reopens.</span></span></li>
-    <li><span class="box"></span><span>Shikara ride, pony rides, sledging<span class="c-sub">Book on the ground — fix the price before starting each ride.</span></span></li>
+    <li><span class="box done"></span><span class="c-body">Flights booked — out Oct 10, back Oct 19</span><span class="c-badge badge b-ok">Booked</span></li>
+    <li><span class="box done"></span><span class="c-body">Hotels booked — Srinagar, Pahalgam, Gulmarg, Sonamarg (2 nights each)</span><span class="c-badge badge b-ok">Booked</span></li>
+    <li><span class="box"></span><span class="c-body">Gulmarg Gondola, Oct 15, Phase 1 + Phase 2<span class="c-sub">Official portal only. Not open for Oct 15 yet — reminder set for Sep 15, 9:00 AM, site being monitored. Portal blocks automated access, so booking may need to happen from a phone in India.</span></span><span class="c-badge badge b-watch">Monitoring</span></li>
+    <li><span class="box"></span><span class="c-body">Final night (Oct 18) stay — Srinagar preferred<span class="c-sub">Not yet booked anywhere.</span></span><span class="c-badge badge b-open">Open</span></li>
+    <li><span class="box"></span><span class="c-body">Approve final chauffeur quote<span class="c-sub">Lead quote in hand, backups being compared; confirm the all-in figure before committing.</span></span><span class="c-badge badge b-open">Open</span></li>
+    <li><span class="box"></span><span class="c-body">Reconfirm Sonamarg hotel and road status before travel<span class="c-sub">Mid-October is tail season; closures and early snow are possible.</span></span><span class="c-badge badge b-open">Before travel</span></li>
+    <li><span class="box"></span><span class="c-body">Recheck Doodhpathri access 1–2 days before Oct 11<span class="c-sub">Free swap agreed with the operator if it reopens.</span></span><span class="c-badge badge b-closed">Closed now</span></li>
+    <li><span class="box"></span><span class="c-body">Shikara ride, pony rides, sledging<span class="c-sub">Book on the ground — fix the price before starting each ride.</span></span><span class="c-badge badge b-open">On the ground</span></li>
   </ul>
 </section>
 
 <section id="caveats">
-  <h2>Weather &amp; caveats</h2>
+  <div class="sec-head"><span class="sec-num">06</span><h2 class="serif">Weather &amp; caveats</h2></div>
   <p class="sub">Read this section again the week before flying.</p>
-  <div class="warn"><h3>Doodhpathri temporarily closed</h3><p>Tourists have been asked to avoid the Doodhpathri–Yusmarg forest area until further orders after an ongoing security operation in Budgam (early September). The main circuit — Srinagar, Gulmarg, Pahalgam, Sonamarg — is not affected. Oct 11 defaults to Srinagar sightseeing with a free swap if it reopens.</p></div>
-  <div class="warn"><h3>Sonamarg is tail-season in mid-October</h3><p>Hotels wind down and the Zojila road can close with early snow. Reconfirm the hotel and road status directly before the Gulmarg → Sonamarg leg, and treat Zero Point as a same-morning decision.</p></div>
-  <div class="warn"><h3>Security watch is active</h3><p>The situation is being checked daily against this route. Anything that could affect the planned areas, roads or activities gets flagged as it appears.</p></div>
-  <div class="ok"><h3>Cold and early dark</h3><p>Expect cold mornings and evenings, light fading by ~6 PM, and possible snow at Phase 2 and Zero Point. The plan wraps outdoor time by ~5:15 PM. Pack layers, child thermals, gloves, sunscreen and motion-sickness basics for the mountain roads.</p></div>
-  <div class="ok"><h3>Altitude on Gondola Phase 2</h3><p>Phase 2 reaches ~3,980 m. Plan is Phase 1 + Phase 2, with child eligibility verified at booking and a same-day weather check before riding up.</p></div>
+  <div class="callout c-closed">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4m0 4h.01"/></svg></div>
+    <div><h3>Doodhpathri temporarily closed</h3><p>Tourists have been asked to avoid the Doodhpathri–Yusmarg forest area until further orders after an ongoing security operation in Budgam (early September). The main circuit — Srinagar, Gulmarg, Pahalgam, Sonamarg — is not affected. Oct 11 defaults to Srinagar sightseeing with a free swap if it reopens.</p></div>
+  </div>
+  <div class="callout c-warn">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17.6A5 5 0 0 0 18 8h-1.3A8 8 0 1 0 4 16.2"/><path d="m8 15-2 4m6-5-2 5m6-4-2 4"/></svg></div>
+    <div><h3>Sonamarg is tail-season in mid-October</h3><p>Hotels wind down and the Zojila road can close with early snow. Reconfirm the hotel and road status directly before the Gulmarg → Sonamarg leg, and treat Zero Point as a same-morning decision.</p></div>
+  </div>
+  <div class="callout c-warn">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+    <div><h3>Security watch is active</h3><p>The situation is being checked daily against this route. Anything that could affect the planned areas, roads or activities gets flagged as it appears.</p></div>
+  </div>
+  <div class="callout c-ok">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4 6l16 12M20 6 4 18M8 3.5 12 6l4-2.5M8 20.5 12 18l4 2.5"/></svg></div>
+    <div><h3>Cold and early dark</h3><p>Expect cold mornings and evenings, light fading by ~6 PM, and possible snow at Phase 2 and Zero Point. The plan wraps outdoor time by ~5:15 PM. Pack layers, child thermals, gloves, sunscreen and motion-sickness basics for the mountain roads.</p></div>
+  </div>
+  <div class="callout c-ok">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></div>
+    <div><h3>Altitude on Gondola Phase 2</h3><p>Phase 2 reaches ~3,980 m. Plan is Phase 1 + Phase 2, with child eligibility verified at booking and a same-day weather check before riding up.</p></div>
+  </div>
 </section>
 
 <section id="sources">
-  <h2>Sources</h2>
+  <div class="sec-head"><span class="sec-num">07</span><h2 class="serif">Sources</h2></div>
   <p class="sub">Official and reference links behind this plan.</p>
   <ul class="src">
     <li><a href="https://etickets.jammukashmircablecar.com/">Gulmarg Gondola — official ticket portal</a><span>etickets.jammukashmircablecar.com — the only place to book Phase 1 + 2</span></li>
@@ -326,12 +502,36 @@
 </section>
 
 <footer>
-  <div class="wrap" style="padding:0">
-    Kashmir family trip · October 10–19, 2026 · Itinerary as of September 12, 2026.<br>
-    Plans marked “to be confirmed” or “monitored” are open items — check the checklist before relying on them.
-  </div>
+  Kashmir family trip · October 10–19, 2026 · Itinerary as of September 12, 2026.<br>
+  Plans marked "to be confirmed" or "monitored" are open items — check the checklist before relying on them.
 </footer>
 
 </main>
+
+<script>
+(function(){
+  var spy=function(navSel,secSel){
+    var links=[].slice.call(document.querySelectorAll(navSel+' a'));
+    var secs=[].slice.call(document.querySelectorAll(secSel));
+    if(!links.length||!secs.length)return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){
+            a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);
+            if(a.getAttribute('href')==='#'+e.target.id&&navSel==='#daynav'){
+              a.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+            }
+          });
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    secs.forEach(function(s){io.observe(s)});
+  };
+  spy('#topnav','section[id]');
+  spy('#daynav','.day[id]');
+})();
+</script>
+
 </body>
 </html>
