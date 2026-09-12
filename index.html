@@ -97,7 +97,7 @@
   .card .card-badge{position:absolute;top:16px;right:16px}
 
   /* ---------- Day nav ---------- */
-  .daynav{position:sticky;top:0;z-index:30;background:rgba(246,244,238,.96);backdrop-filter:blur(10px);
+  .daynav{position:relative;background:var(--snow);
     border-bottom:1px solid var(--line);margin:0 -20px 26px;padding:10px 20px;display:flex;gap:6px;
     overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .daynav::-webkit-scrollbar{display:none}
@@ -188,10 +188,9 @@
     .day-head .tag{margin-left:0;width:fit-content}
     .timeline li::before{left:90px}
     .timeline time{width:66px;font-size:.74rem}
-    html{scroll-padding-top:66px}
     nav.topnav .wrap{padding:8px 14px}
     nav.topnav a{min-height:44px;display:inline-flex;align-items:center;padding:8px 12px}
-    .daynav{top:0;margin-bottom:20px;padding:7px 20px;gap:5px}
+    .daynav{margin-bottom:20px;padding:7px 20px;gap:5px}
     .daynav a{min-width:44px;min-height:44px;padding:4px 10px;display:flex;flex-direction:column;justify-content:center}
   }
 </style>
@@ -524,9 +523,6 @@
         if(e.isIntersecting){
           links.forEach(function(a){
             a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);
-            if(a.getAttribute('href')==='#'+e.target.id&&navSel==='#daynav'){
-              a.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
-            }
           });
         }
       });
@@ -540,4 +536,5 @@
 
 </body>
 </html>
+
 
