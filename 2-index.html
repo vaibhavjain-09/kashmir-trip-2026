@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kashmir Family Trip · Oct 10–19, 2026</title>
+<meta name="description" content="A 9-night family itinerary through Srinagar, Pahalgam, Gulmarg and Sonamarg, October 10–19, 2026.">
+<style>
+  :root{
+    --pine:#123b2e; --pine-2:#1d5c46; --snow:#f7f5f0; --saffron:#d97b29;
+    --ink:#1e2422; --muted:#5d6a64; --card:#ffffff; --line:#e4e0d6; --sky:#eef4f2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--snow);color:var(--ink);line-height:1.55}
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px}
+  /* Hero */
+  header.hero{background:linear-gradient(160deg,#0d2e23 0%,#1d5c46 55%,#2f7a5c 100%);color:#fff;padding:56px 0 46px}
+  .kicker{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:#f3c98f;font-weight:700}
+  header.hero h1{font-size:clamp(2rem,6vw,3.1rem);line-height:1.08;margin:10px 0 6px;font-weight:800}
+  header.hero .dates{font-size:1.05rem;color:#d8e8e0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;
+    padding:6px 13px;font-size:.8rem;color:#eef6f1}
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+  nav a{white-space:nowrap;text-decoration:none;color:var(--pine);font-size:.82rem;font-weight:600;
+    padding:6px 11px;border-radius:999px}
+  nav a:hover{background:var(--sky)}
+  section{padding:40px 0 8px}
+  h2{font-size:1.45rem;color:var(--pine);margin-bottom:4px}
+  .sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+  /* Route */
+  .route{display:flex;flex-direction:column;gap:0;margin-top:8px}
+  .leg{display:flex;gap:14px}
+  .leg .dot-col{display:flex;flex-direction:column;align-items:center;width:22px;flex:none}
+  .dot{width:13px;height:13px;border-radius:50%;background:var(--saffron);border:3px solid #fff;
+    box-shadow:0 0 0 2px var(--saffron);margin-top:5px}
+  .rail{width:2px;flex:1;background:var(--line);min-height:26px}
+  .leg:last-child .rail{display:none}
+  .leg-body{padding-bottom:22px}
+  .leg-body h3{font-size:1.02rem;color:var(--ink)}
+  .leg-body p{font-size:.86rem;color:var(--muted)}
+  /* Cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    box-shadow:0 1px 3px rgba(20,40,30,.05)}
+  .card h3{font-size:1rem;color:var(--pine);margin-bottom:2px}
+  .card .meta{font-size:.8rem;color:var(--saffron);font-weight:700;letter-spacing:.02em;margin-bottom:6px}
+  .card p{font-size:.87rem;color:var(--muted)}
+  .card.tbd{border-style:dashed;background:#fbf9f4}
+  /* Day cards */
+  .day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;
+    box-shadow:0 1px 3px rgba(20,40,30,.05)}
+  .day-head{display:flex;align-items:baseline;gap:12px;padding:14px 18px;background:var(--sky);flex-wrap:wrap}
+  .day-head .dow{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:var(--saffron);text-transform:uppercase}
+  .day-head h3{font-size:1.05rem;color:var(--pine)}
+  .day-head .tag{margin-left:auto;font-size:.72rem;color:var(--muted);font-weight:600}
+  .day ul{list-style:none;padding:12px 18px 14px}
+  .day li{display:flex;gap:12px;padding:5px 0;font-size:.9rem;border-bottom:1px dashed #f0ede4}
+  .day li:last-child{border-bottom:none}
+  .day li time{flex:none;width:86px;font-weight:700;color:var(--pine-2);font-variant-numeric:tabular-nums;font-size:.82rem;padding-top:1px}
+  .note{margin:0 18px 14px;padding:10px 14px;background:#fdf4e7;border-left:3px solid var(--saffron);
+    border-radius:0 10px 10px 0;font-size:.84rem;color:#6b4a1f}
+  /* Checklist */
+  .check{list-style:none}
+  .check li{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+  .check li:last-child{border-bottom:none}
+  .box{flex:none;width:19px;height:19px;border:2px solid var(--pine-2);border-radius:6px;margin-top:2px}
+  .box.done{background:var(--pine-2);position:relative}
+  .box.done::after{content:"✓";color:#fff;font-size:.75rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .check .c-sub{display:block;font-size:.8rem;color:var(--muted);margin-top:2px}
+  /* Caveats */
+  .warn{background:#fdf4e7;border:1px solid #f0ddbb;border-radius:14px;padding:14px 18px;margin-bottom:12px}
+  .warn h3{font-size:.95rem;color:#7a5416;margin-bottom:4px}
+  .warn p{font-size:.87rem;color:#6b4a1f}
+  .ok{background:var(--sky);border:1px solid #d4e4dc;border-radius:14px;padding:14px 18px;margin-bottom:12px}
+  .ok h3{font-size:.95rem;color:var(--pine);margin-bottom:4px}
+  .ok p{font-size:.87rem;color:var(--muted)}
+  /* Sources */
+  .src{list-style:none}
+  .src li{padding:7px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+  .src li:last-child{border-bottom:none}
+  .src a{color:var(--pine-2);text-decoration:none;font-weight:600;word-break:break-all}
+  .src a:hover{text-decoration:underline}
+  .src span{color:var(--muted);font-size:.8rem;display:block}
+  footer{margin-top:46px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+  @media (max-width:520px){
+    .day li time{width:74px}
+    .day-head .tag{width:100%;margin-left:0}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Family Adventure · 9 Nights</div>
+    <h1>Kashmir in Autumn</h1>
+    <div class="dates">October 10–19, 2026 · Srinagar → Pahalgam → Gulmarg → Sonamarg → Srinagar</div>
+    <div class="chips">
+      <span class="chip">2 adults + 1 child (paced for a 4-year-old)</span>
+      <span class="chip">Leave ~8:00 AM</span>
+      <span class="chip">Back before dark</span>
+      <span class="chip">Dinner ~7:30 PM</span>
+      <span class="chip">Sleep by 10 PM</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#route">Route</a>
+    <a href="#stays">Stays</a>
+    <a href="#days">Day by day</a>
+    <a href="#transport">Transport</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#caveats">Caveats</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="route">
+  <h2>Route overview</h2>
+  <p class="sub">One clean loop with no repeated legs. Every transfer doubles as a sightseeing day.</p>
+  <div class="route">
+    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
+      <div class="leg-body"><h3>Srinagar · 2 nights</h3><p>Land 12:35 PM on Oct 10 · Dal Lake, Mughal gardens, Doodhpathri day trip</p></div></div>
+    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
+      <div class="leg-body"><h3>Pahalgam · 2 nights</h3><p>Oct 12–14 · Lidder valley, Aru, Betaab, Chandanwari, Baisaran</p></div></div>
+    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
+      <div class="leg-body"><h3>Gulmarg · 2 nights</h3><p>Oct 14–16 · Gondola Phase 1 + 2, meadows, Drung Waterfall en route</p></div></div>
+    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
+      <div class="leg-body"><h3>Sonamarg · 2 nights</h3><p>Oct 16–18 · Thajiwas, Sindh river, optional Zero Point</p></div></div>
+    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
+      <div class="leg-body"><h3>Srinagar · 1 night (final)</h3><p>Oct 18–19 · Naranag temple option, Dal Lake sunset</p></div></div>
+    <div class="leg"><div class="dot-col"><div class="dot"></div><div class="rail"></div></div>
+      <div class="leg-body"><h3>Fly out Oct 19 · 3:50 PM</h3><p>Leave for the airport with a 2.5-hour buffer</p></div></div>
+  </div>
+</section>
+
+<section id="stays">
+  <h2>Stays</h2>
+  <p class="sub">All fixed bookings. Two nights per stop, so no one-night packing churn.</p>
+  <div class="grid">
+    <div class="card"><div class="meta">OCT 10–12 · 2 NIGHTS</div><h3>The Vintage, Srinagar</h3><p>On Dal Lake. Shikara ghat and Mughal gardens close by.</p></div>
+    <div class="card"><div class="meta">OCT 12–14 · 2 NIGHTS</div><h3>Radisson Golf Resort, Pahalgam</h3><p>Lidder valley base for Aru, Betaab and Chandanwari.</p></div>
+    <div class="card"><div class="meta">OCT 14–16 · 2 NIGHTS</div><h3>The Vintage, Gulmarg</h3><p>Near the Gondola base — easy 8 AM start on cable-car day.</p></div>
+    <div class="card"><div class="meta">OCT 16–18 · 2 NIGHTS</div><h3>Four Points by Sheraton, Sonamarg</h3><p>Mid-October is tail season here — reconfirm directly before travel.</p></div>
+    <div class="card tbd"><div class="meta">OCT 18–19 · 1 NIGHT</div><h3>Final night — to be confirmed</h3><p>Planned in Srinagar near Dal Lake. Booking still open.</p></div>
+  </div>
+</section>
+
+<section id="days">
+  <h2>Day by day</h2>
+  <p class="sub">Tentative timings, grouped so each day flows in one direction. Outdoor time wraps by ~5:15 PM — mid-October gets dark and cold quickly.</p>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Sat · Oct 10</span><h3>Arrive in Srinagar</h3><span class="tag">One Dal Lake cluster</span></div>
+    <ul>
+      <li><time>12:35 PM</time><span>Land in Srinagar (flew from Bengaluru via Delhi)</span></li>
+      <li><time>2:00 PM</time><span>Check in, lunch and rest</span></li>
+      <li><time>3:30 PM</time><span>Nishat or Shalimar Garden</span></li>
+      <li><time>5:00 PM</time><span>Private shikara ride on Dal Lake (child life jacket)</span></li>
+      <li><time>7:30 PM</time><span>Dinner</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Sun · Oct 11</span><h3>Doodhpathri day trip</h3><span class="tag">Out-and-back from Srinagar</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Leave Srinagar (~1.5–2 hr drive)</span></li>
+      <li><time>10:00 AM</time><span>Meadow and pine-forest walk</span></li>
+      <li><time>12:30 PM</time><span>Picnic lunch by the river</span></li>
+      <li><time>1:30 PM</time><span>Optional short led pony ride</span></li>
+      <li><time>2:30 PM</time><span>Palmaidan viewpoint nearby</span></li>
+      <li><time>3:45 PM</time><span>Head back</span></li>
+      <li><time>5:45 PM</time><span>Hotel</span></li>
+    </ul>
+    <p class="note"><strong>Currently closed.</strong> Doodhpathri is temporarily shut to tourists (security operation in the Budgam forest area). Oct 11 is booked as a Srinagar sightseeing day — Mughal gardens, Pari Mahal, old city — with a free swap to Doodhpathri if it reopens, and Yusmarg as the alternative. Recheck 1–2 days before.</p>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Mon · Oct 12</span><h3>Srinagar → Pahalgam</h3><span class="tag">Every stop on the highway</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Leave hotel</span></li>
+      <li><time>8:45 AM</time><span>Pampore saffron fields stop</span></li>
+      <li><time>9:45 AM</time><span>Awantipora ruins</span></li>
+      <li><time>10:45 AM</time><span>Cricket-bat workshop at Sangam</span></li>
+      <li><time>12:30 PM</time><span>Pahalgam check-in and lunch</span></li>
+      <li><time>3:30 PM</time><span>Lidder riverside walk in town</span></li>
+      <li><time>5:15 PM</time><span>Hotel</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Tue · Oct 13</span><h3>Pahalgam valleys</h3><span class="tag">Each road fork once</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Aru Valley + short led pony ride (local union taxi)</span></li>
+      <li><time>12:00 PM</time><span>Back to Pahalgam for lunch</span></li>
+      <li><time>1:30 PM</time><span>Betaab Valley + Chandanwari, same road</span></li>
+      <li><time>4:00 PM</time><span>Hotel and rest</span></li>
+    </ul>
+    <p class="note">If energy runs low, drop Chandanwari rather than criss-crossing the valley.</p>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Wed · Oct 14</span><h3>Pahalgam → Gulmarg</h3><span class="tag">One useful stop en route</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Baisaran meadow above Pahalgam (pony or child-paced walk)</span></li>
+      <li><time>11:00 AM</time><span>Leave Pahalgam</span></li>
+      <li><time>2:30 PM</time><span>Drung Waterfall near Tangmarg, directly on the route</span></li>
+      <li><time>3:45 PM</time><span>Continue to Gulmarg</span></li>
+      <li><time>4:30 PM</time><span>Check in</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Thu · Oct 15</span><h3>Gulmarg Gondola day</h3><span class="tag">Everything within Gulmarg</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Gondola base — first slot</span></li>
+      <li><time>8:30 AM</time><span>Phase 1 to Kongdori, then Phase 2 toward Apharwat (~3,980 m)</span></li>
+      <li><time>11:30 AM</time><span>Snow / meadow play + sledging</span></li>
+      <li><time>12:00 PM</time><span>Lunch</span></li>
+      <li><time>1:30 PM</time><span>St Mary's Church + Children's Park</span></li>
+      <li><time>3:00 PM</time><span>Strawberry Valley</span></li>
+      <li><time>5:00 PM</time><span>Hotel</span></li>
+    </ul>
+    <p class="note"><strong>Tickets:</strong> official portal only, for Phase 1 + Phase 2 on Oct 15. Booking is being monitored and a reminder is set. Verify child eligibility for Phase 2 before buying — altitude gain is rapid, and entry rules can block it even if he's fine with heights.</p>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Fri · Oct 16</span><h3>Gulmarg → Sonamarg</h3><span class="tag">Clean transfer day</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Leave Gulmarg</span></li>
+      <li><time>8:30 AM</time><span>Tangmarg viewpoint on the descent</span></li>
+      <li><time>12:30 PM</time><span>Sonamarg check-in and lunch</span></li>
+      <li><time>3:30 PM</time><span>Sindh river walk in town</span></li>
+      <li><time>5:00 PM</time><span>Hotel</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Sat · Oct 17</span><h3>Sonamarg valley day</h3><span class="tag">One compact valley</span></div>
+    <ul>
+      <li><time>8:00 AM</time><span>Thajiwas-side pony ride or short glacier-view walk</span></li>
+      <li><time>12:00 PM</time><span>Picnic lunch</span></li>
+      <li><time>1:30 PM</time><span>Lower valley + riverbank play</span></li>
+      <li><time>4:30 PM</time><span>Hotel</span></li>
+    </ul>
+    <p class="note">Zero Point / Zojila only if the road and weather are clearly good that morning — decide on the day, not in advance.</p>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Sun · Oct 18</span><h3>Sonamarg → Srinagar</h3><span class="tag">Return axis</span></div>
+    <ul>
+      <li><time>8:30 AM</time><span>Short river walk</span></li>
+      <li><time>10:00 AM</time><span>Leave toward Srinagar</span></li>
+      <li><time>11:00 AM</time><span>Optional Naranag temple near Kangan, on the way</span></li>
+      <li><time>1:30 PM</time><span>Lunch and check-in</span></li>
+      <li><time>4:30 PM</time><span>Dal Lake sunset or gentle old-city walk</span></li>
+      <li><time>7:30 PM</time><span>Dinner</span></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="dow">Mon · Oct 19</span><h3>Fly home</h3><span class="tag">Buffer built in</span></div>
+    <ul>
+      <li><time>Morning</time><span>Easy breakfast and packing</span></li>
+      <li><time>~1:00 PM</time><span>Leave for the airport (2.5-hour buffer)</span></li>
+      <li><time>3:50 PM</time><span>Flight from Srinagar (to Bengaluru via Delhi)</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="transport">
+  <h2>Transport</h2>
+  <p class="sub">One chauffeur-driven car for the whole loop; local union taxis for in-resort sightseeing.</p>
+  <div class="grid">
+    <div class="card"><div class="meta">FLIGHTS</div><h3>Bengaluru ⇄ Srinagar via Delhi</h3><p>Land Sat Oct 10 at 12:35 PM · Fly out Mon Oct 19 at 3:50 PM. Airport pickup and drop are part of the car plan.</p></div>
+    <div class="card"><div class="meta">FULL-TRIP CAR</div><h3>Chauffeur-driven SUV</h3><p>All-inclusive quote received from the lead operator (Innova/Ertiga class, same driver requested, Doodhpathri swap included). Two backup quotes are being compared before anything is booked — no commitment yet.</p></div>
+    <div class="card"><div class="meta">LOCAL UNION TAXIS</div><h3>Gulmarg · Pahalgam · Sonamarg</h3><p>In-resort sightseeing runs on local union cabs, paid directly on the ground. Vendor-quoted estimates: Gulmarg ₹3–4k, Pahalgam Aru/Betaab/Chandanwari ₹2–3k, Sonamarg Zero Point ₹5–6k.</p></div>
+  </div>
+</section>
+
+<section id="checklist">
+  <h2>Booking checklist</h2>
+  <p class="sub">What's locked and what's still open, three weeks out.</p>
+  <ul class="check">
+    <li><span class="box done"></span><span>Flights booked — out Oct 10, back Oct 19</span></li>
+    <li><span class="box done"></span><span>Hotels booked — Srinagar, Pahalgam, Gulmarg, Sonamarg (2 nights each)</span></li>
+    <li><span class="box"></span><span>Gulmarg Gondola, Oct 15, Phase 1 + Phase 2<span class="c-sub">Official portal only. Not open for Oct 15 yet — reminder set for Sep 15, 9:00 AM, site being monitored. Portal blocks automated access, so booking may need to happen from a phone in India.</span></span></li>
+    <li><span class="box"></span><span>Final night (Oct 18) stay — Srinagar preferred<span class="c-sub">Not yet booked anywhere.</span></span></li>
+    <li><span class="box"></span><span>Approve final chauffeur quote<span class="c-sub">Lead quote in hand, backups being compared; confirm the all-in figure before committing.</span></span></li>
+    <li><span class="box"></span><span>Reconfirm Sonamarg hotel and road status before travel<span class="c-sub">Mid-October is tail season; closures and early snow are possible.</span></span></li>
+    <li><span class="box"></span><span>Recheck Doodhpathri access 1–2 days before Oct 11<span class="c-sub">Free swap agreed with the operator if it reopens.</span></span></li>
+    <li><span class="box"></span><span>Shikara ride, pony rides, sledging<span class="c-sub">Book on the ground — fix the price before starting each ride.</span></span></li>
+  </ul>
+</section>
+
+<section id="caveats">
+  <h2>Weather &amp; caveats</h2>
+  <p class="sub">Read this section again the week before flying.</p>
+  <div class="warn"><h3>Doodhpathri temporarily closed</h3><p>Tourists have been asked to avoid the Doodhpathri–Yusmarg forest area until further orders after an ongoing security operation in Budgam (early September). The main circuit — Srinagar, Gulmarg, Pahalgam, Sonamarg — is not affected. Oct 11 defaults to Srinagar sightseeing with a free swap if it reopens.</p></div>
+  <div class="warn"><h3>Sonamarg is tail-season in mid-October</h3><p>Hotels wind down and the Zojila road can close with early snow. Reconfirm the hotel and road status directly before the Gulmarg → Sonamarg leg, and treat Zero Point as a same-morning decision.</p></div>
+  <div class="warn"><h3>Security watch is active</h3><p>The situation is being checked daily against this route. Anything that could affect the planned areas, roads or activities gets flagged as it appears.</p></div>
+  <div class="ok"><h3>Cold and early dark</h3><p>Expect cold mornings and evenings, light fading by ~6 PM, and possible snow at Phase 2 and Zero Point. The plan wraps outdoor time by ~5:15 PM. Pack layers, child thermals, gloves, sunscreen and motion-sickness basics for the mountain roads.</p></div>
+  <div class="ok"><h3>Altitude on Gondola Phase 2</h3><p>Phase 2 reaches ~3,980 m. Plan is Phase 1 + Phase 2, with child eligibility verified at booking and a same-day weather check before riding up.</p></div>
+</section>
+
+<section id="sources">
+  <h2>Sources</h2>
+  <p class="sub">Official and reference links behind this plan.</p>
+  <ul class="src">
+    <li><a href="https://etickets.jammukashmircablecar.com/">Gulmarg Gondola — official ticket portal</a><span>etickets.jammukashmircablecar.com — the only place to book Phase 1 + 2</span></li>
+    <li><a href="https://www.news18.com/agency-feeds/search-for-terrorists-in-jks-budgam-forest-enters-second-day-10310361.html">News18 — Budgam search operation, tourists asked to avoid Doodhpathri</a><span>Current closure context (September 2026)</span></li>
+    <li><a href="https://kashmirobserver.net/2026/08/21/after-temporary-closure-doodhpathri-reopens-for-tourists/">Kashmir Observer — Doodhpathri's earlier reopening (Aug 2026)</a><span>Shows closures here are temporary and lift without much notice</span></li>
+    <li><a href="https://www.kashmircabservice.in/kashmir-taxi-union-guide-2026/">Kashmir taxi union guide 2026</a><span>Why local sightseeing uses union cabs with their own rates</span></li>
+    <li><a href="https://kashmirtourismofficial.com/doodhpathri/">Doodhpathri visitor guide</a><span>Meadows, pony trails and Palmaidan</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    Kashmir family trip · October 10–19, 2026 · Itinerary as of September 12, 2026.<br>
+    Plans marked “to be confirmed” or “monitored” are open items — check the checklist before relying on them.
+  </div>
+</footer>
+
+</main>
+</body>
+</html>
